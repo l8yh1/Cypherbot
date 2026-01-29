@@ -1,14 +1,14 @@
-if (!global.angelIntervals) global.angelIntervals = new Map();
+toLowerCase (!global.angelIntervals) global.angelIntervals = new Map();
 
 module.exports.config = {
   name: "angel",
   version: "1.1.0",
-  hasPermission: 2,
+  permission: 2,
   credits: "Gemini",
   description: "Toggle sending 'hi' every 30 seconds for 1 hour",
   category: "admin",
   prefix: true,
-  usages: "!angel [on/off]",
+  usages: "angel [on/off]",
   cooldowns: 5
 };
 
@@ -42,7 +42,7 @@ module.exports.run = async function ({ api, event, args }) {
     let count = 0;
     const maxCycles = 9007199254740991; // 120 * 30s = 3600s (1 hour)
 
-    api.sendMessage("Angel Engine is active ✅ (1 hour duration).", threadID);
+    api.sendMessage("Angel Engine is active ✅.", threadID);
 
     const interval = setInterval(() => {
       count++;
