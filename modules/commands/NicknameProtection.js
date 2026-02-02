@@ -1,7 +1,7 @@
 module.exports.config = {
   name: "كنيات",
   version: "1.0.0",
-  hasPermssion: 1,
+  hasPermission: 2,
   credits: "عمر",
   description: "حماية كنيات المجموعة بتغييرها باستمرار",
   commandCategory: "نظام",
@@ -28,6 +28,17 @@ module.exports.handleEvent = async function({ api, event }) {
 
 module.exports.run = async function({ api, event, args }) {
   const { threadID, messageID, senderID } = event;
+
+  const botAdmins = [
+    ...(global.config.ADMINBOT || []),
+    ...(global.config.OPERATOR || []),
+    ...(global.config.OWNER || [])
+  ].map(String);
+
+  if (!botAdmins.includes(String(senderID))) {
+    return api.sendMessage("❌ هذا الأمر خاص بإدارة البوت فقط", threadID, messageID);
+  }
+
   const action = args[0];
   const nickname = args.slice(1).join(" ");
 
