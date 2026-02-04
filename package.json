@@ -13,8 +13,8 @@
     "url": "git+https://github.com/tandung1/Bot12.git"
   },
  "author": "D-Jukie",
-  "engines": {
-    "node": ">=20.5.0 <21.0.0"
+ "engines": {
+  "node": "20.x"
 }
   },
   "dependencies": {
